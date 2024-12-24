@@ -16,6 +16,9 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+			  'color_black': '#2E2A47',
+			  'color_gray': '#7E8CA0',
+			  'color_blue_normal': '#1679AB',
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
