@@ -9,6 +9,7 @@ import {
 import { HeaderLogo } from "./header-logo";
 import { Navigation } from "./navigation/navigation";
 import { Loader2 } from "lucide-react";
+import { WelcomeMsg } from "@/components/welcome/msg";
 
 export const Header = () => {
   return (
@@ -31,6 +32,7 @@ export const Header = () => {
             </SignedIn>
           </ClerkLoaded>
         </div>
+        <WelcomeMsg />
       </div>
     </header>
   );
