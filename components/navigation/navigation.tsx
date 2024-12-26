@@ -6,7 +6,8 @@ import { useMedia } from "react-use"
 import {
     Sheet,
     SheetContent,
-    SheetTrigger
+    SheetTrigger,
+    SheetTitle
 } from "@/components/ui/sheet"
 import { useState } from "react"
 import { Button } from "../ui/button"
@@ -47,31 +48,33 @@ export const Navigation = () => {
     if(isMobile){
         return (
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger>
+                <SheetTrigger asChild>
                     <Button
-                       size = "sm" 
-                       variant = "outline"
+                       size="sm" 
+                       variant="outline"
                        className="font-roboto bg-color_white/10 hover:bg-color_white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/25 transtion"
                     >
                         <Menu className="size-4" />
                     </Button>
                 </SheetTrigger>
                 <SheetContent
-                side="left"
-                className="px-2"
+                    side="left"
+                    className="px-4 py-4"
                 >
+                    <SheetTitle className="mt-5 ml-3 mr-2">
+                        Client Access
+                    </SheetTitle>
                     <nav className="flex flex-col gap-y-2 pt-6">
                         {routes.map((route) =>(
                             <Button
-                            key={route.href}
-                            variant={route.href === pathName ? "secondary" : "ghost"}
-                            onClick={() => onClick(route.href)}
-                            className="w-full justify-start"
+                                key={route.href}
+                                variant={route.href === pathName ? "secondary" : "ghost"}
+                                onClick={() => onClick(route.href)}
+                                className="w-full justify-start"
                             >
                                 {route.label}
                             </Button>
                         ))}
-
                     </nav> 
                 </SheetContent>
             </Sheet>
