@@ -1,29 +1,34 @@
-import { zValidator } from '@hono/zod-validator';
+// import { zValidator } from '@hono/zod-validator';
 import { clerkMiddleware, getAuth } from '@hono/clerk-auth'
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
-import { z } from 'zod'
-import test from 'node:test';
-
+// import { z } from 'zod'
+// import test from 'node:test';
+import authors from './authors'
+import books from './books'
 
 export const runtime = 'edge'
 
 const app = new Hono().basePath('/api');
 
-app
-  .get(
-    '/hello',
-    clerkMiddleware(),
-    (c) => {
-        const auth = getAuth(c)
+app.route('/authors', authors)
+app.route('/books', books)
 
-        if (!auth?.userId){
-            return c.json({error: "Unauthorized 403!"})
-        }
-    return c.json({
-      message: 'Hello Next.js!',
-    })
-  })
+// app
+//   .get(
+//     '/hello',
+//     clerkMiddleware(),
+//     (c) => {
+//         const auth = getAuth(c)
+
+//         if (!auth?.userId){
+//             return c.json({error: "Unauthorized 403!"})
+//         }
+//     return c.json({
+//       message: 'Hello Next.js!',
+//       userId: auth.userId
+//     })
+//   })
 
 //   .get(
 //     '/hello/:test',
