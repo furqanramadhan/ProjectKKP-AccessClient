@@ -12,7 +12,7 @@ export const WelcomeMsg = () => {
         {user?.firstName} 👋
       </h2>
       <p className="text-sm lg:text-base text-color_blue_bg">
-        This is an Client Access Regiter app
+        This is an Client Access Register app
       </p>
     </div>
   );

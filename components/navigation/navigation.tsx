@@ -56,8 +56,8 @@ export const Navigation = () => {
             <Menu className="size-4" />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="px-4 py-4">
-          <SheetTitle className="mt-5 ml-3 mr-2">Client Access</SheetTitle>
+        <SheetContent side="left" className="px-2">
+          <SheetTitle>Navigation Menu</SheetTitle>
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button

@@ -21,6 +21,7 @@ export default {
         color_blue_normal: "#1679AB",
         color_white: "#F5F7F8",
         color_blue_bg: "#B7E0FF",
+        color_yellow: "#F09319",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

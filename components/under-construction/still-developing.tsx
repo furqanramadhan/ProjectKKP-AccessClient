@@ -1,11 +1,17 @@
+"use client";
+import { useState } from "react";
 import { AlertTriangle } from "lucide-react";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 const UnderConstructionPage = () => {
+  const [isActive] = useState(false);
+
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50">
       <div className="text-center space-y-6 max-w-2xl mx-auto px-4">
         <div className="flex justify-center">
-          <AlertTriangle className="h-24 w-24 text-yellow-500 animate-pulse" />
+          <AlertTriangle className="h-24 w-24 text-color_yellow animate-pulse" />
         </div>
 
         <div className="space-y-2">
@@ -19,11 +25,20 @@ const UnderConstructionPage = () => {
 
         <div className="flex flex-col items-center gap-4 pt-4">
           <div className="h-2 w-64 bg-gray-200 rounded-full">
-            <div className="h-full w-1/2 bg-yellow-500 rounded-full animate-bounce" />
+            <div className="h-full w-1/2 bg-color_yellow rounded-full animate-bounce" />
           </div>
           <p className="text-sm text-gray-500">
             Expected completion: Coming soon
           </p>
+          <Button
+            onClick={() => (window.location.href = "/")}
+            className={cn(
+              "w-full lg:w-auto justify-between font-roboto bg-color_blue_normal text hover:bg-color_yellow border-none focus-visible:ring-offset-0 outline-none transtion",
+              isActive ? "bg-color_gray/10 text-color_black" : "bg-transparent"
+            )}
+          >
+            Go Back
+          </Button>
         </div>
       </div>
     </div>
