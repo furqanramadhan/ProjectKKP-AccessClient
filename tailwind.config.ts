@@ -9,6 +9,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sf: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "San Francisco",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

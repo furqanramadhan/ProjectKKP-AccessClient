@@ -51,13 +51,13 @@ export const Navigation = () => {
           <Button
             size="sm"
             variant="outline"
-            className="font-roboto bg-color_white/10 hover:bg-color_white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/25 transtion"
+            className="font-sf bg-color_white/10 hover:bg-color_white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/25 transtion"
           >
             <Menu className="size-4" />
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <SheetTitle>Navigation Menu</SheetTitle>
+          <SheetTitle className="py-4 px-4">Navigation Menu</SheetTitle>
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button
