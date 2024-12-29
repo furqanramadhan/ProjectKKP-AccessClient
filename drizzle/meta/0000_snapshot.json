@@ -1,10 +1,10 @@
 {
-  "id": "514a6651-611e-46cd-8c5b-1e6c2cbe60c4",
+  "id": "6196e072-1d77-47eb-9de0-64e2a6a6e800",
   "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "test_table": {
+    "public.test_table": {
       "name": "test_table",
       "schema": "",
       "columns": {
@@ -30,11 +30,18 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {},
   "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
   "_meta": {
     "columns": {},
     "schemas": {},
