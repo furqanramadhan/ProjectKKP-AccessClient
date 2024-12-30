@@ -6,13 +6,16 @@ import { handle } from "hono/vercel";
 // import test from 'node:test';
 import authors from "./authors";
 import books from "./books";
+import accounts from "./accounts";
 
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
 
-app.route("/authors", authors);
-app.route("/books", books);
+const routes = app
+  .route("/accounts", accounts)
+  .route("authors", authors)
+  .route("/books", books);
 
 // app
 //   .get(
@@ -57,6 +60,7 @@ app.route("/books", books);
 
 export const GET = handle(app);
 export const POST = handle(app);
+export type AppType = typeof routes;
 
 // export const GET = () => {
 //     return NextResponse.json({})

@@ -4,7 +4,3 @@ import * as schema from "./schema";
 
 export const sql = neon(process.env.DATABASE_URL!);
 export const db = drizzle(sql, { schema });
-
-// const testTable = db.query.TextExample.findFirst({
-//     where
-// });

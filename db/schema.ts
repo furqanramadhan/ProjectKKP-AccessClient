@@ -1,6 +1,6 @@
 import { text, pgTable } from "drizzle-orm/pg-core";
 
-export const TextExample = pgTable("test_table", {
+export const accounts = pgTable("accounts", {
   id: text("id").primaryKey().notNull(),
   plaidId: text("plaid_id"),
   name: text("name").notNull(),

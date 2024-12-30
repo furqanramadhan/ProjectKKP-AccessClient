@@ -1,12 +1,7 @@
-import * as dotenv from "dotenv";
+import { config } from "dotenv";
 import { defineConfig } from "drizzle-kit";
 
-// Load environment variables
-dotenv.config();
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is missing in .env file");
-}
+config({ path: ".env" });
 
 export default defineConfig({
   schema: "./db/schema.ts", // Path to the schema file

@@ -1,5 +1,5 @@
 {
-  "id": "18a70c4e-ae2a-4642-8ff3-e979c88b26ad",
+  "id": "0998625d-3082-4c82-929f-02c1aa15d93e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -13,6 +13,12 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true
+        },
+        "plaid_id": {
+          "name": "plaid_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "name": {
           "name": "name",
