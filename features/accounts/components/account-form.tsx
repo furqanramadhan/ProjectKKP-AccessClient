@@ -30,7 +30,7 @@ type Props = {
 
 export const AccountForm = ({
   id,
-  defaultValues = { name: "" },
+  defaultValues,
   onSubmit,
   onDelete,
   disabled,
@@ -41,7 +41,7 @@ export const AccountForm = ({
   });
 
   const handleSubmit = (values: FormValues) => {
-    console.log({ values });
+    onSubmit(values);
   };
 
   const handleDelete = () => {
