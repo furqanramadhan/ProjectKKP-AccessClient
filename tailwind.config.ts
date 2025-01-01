@@ -33,6 +33,7 @@ export default {
         color_white: "#F5F7F8",
         color_blue_bg: "#B7E0FF",
         color_yellow: "#F09319",
+        color_red: "#B43F3F",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

@@ -1,4 +1,6 @@
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
+import { AccountForm } from "@/features/accounts/components/account-form";
+
 import {
   Sheet,
   SheetContent,
@@ -17,6 +19,7 @@ export const NewAccountSheet = () => {
           <SheetTitle>New Account</SheetTitle>
           <SheetDescription>Create an account</SheetDescription>
         </SheetHeader>
+        <AccountForm onSubmit={() => {}} disabled={false} />
       </SheetContent>
     </Sheet>
   );
