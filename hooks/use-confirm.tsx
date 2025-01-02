@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { JSX } from "react";
+
 import {
   Dialog,
   DialogContent,
@@ -38,22 +39,23 @@ export const useConfirm = (
   };
 
   const ConfirmationDialog = () => (
-    <Dialog open={promise !== null}>
+    <Dialog open={promise !== null} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{message}</DialogDescription>
         </DialogHeader>
         <DialogFooter className="pt-5">
-          <Button onClick={handleConfirm} variant="destructive">
+          <Button onClick={handleConfirm} variant="green">
             Yes
           </Button>
-          <Button onClick={handleCancel} variant="outline">
+          <Button onClick={handleCancel} variant="black">
             Cancel
           </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
+
   return [ConfirmationDialog, confirm];
 };
