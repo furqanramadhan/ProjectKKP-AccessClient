@@ -1,17 +1,17 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { FcGenericSortingAsc, FcGenericSortingDesc } from "react-icons/fc";
+import { FaSortAlphaDown, FaSortAlphaUp } from "react-icons/fa";
 import { Checkbox } from "@/components/ui/checkbox";
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-export const columns: ColumnDef<Payment>[] = [
+import { InferResponseType } from "hono";
+import { client } from "@/lib/hono";
+
+export type ResponseType = InferResponseType<
+  typeof client.api.accounts.$get,
+  200
+>["data"][0];
+
+export const columns: ColumnDef<ResponseType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -35,7 +35,7 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "email",
+    accessorKey: "name",
     header: ({ column }) => {
       const isSortedAsc = column.getIsSorted() === "asc";
       const isSortedDesc = column.getIsSorted() === "desc";
@@ -44,22 +44,22 @@ export const columns: ColumnDef<Payment>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(isSortedAsc)}
         >
-          Email
-          {isSortedAsc && <FcGenericSortingAsc className="ml-2 h-4 w-4" />}
-          {isSortedDesc && <FcGenericSortingDesc className="ml-2 h-4 w-4" />}
+          Name
+          {isSortedAsc && <FaSortAlphaDown className="ml-2 h-4 w-4" />}
+          {isSortedDesc && <FaSortAlphaUp className="ml-2 h-4 w-4" />}
           {!isSortedAsc && !isSortedDesc && (
-            <FcGenericSortingAsc className="ml-2 h-4 w-4 opacity-50" />
+            <FaSortAlphaDown className="ml-2 h-4 w-4 opacity-50" />
           )}
         </Button>
       );
     },
   },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
+  // {
+  //   accessorKey: "amount",
+  //   header: "Amount",
+  // },
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  // },
 ];
