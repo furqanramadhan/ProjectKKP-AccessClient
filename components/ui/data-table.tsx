@@ -55,6 +55,7 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onSortingChange: setSorting,
+    onRowSelectionChange: setRowSelection,
     getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
@@ -80,6 +81,10 @@ export function DataTable<TData, TValue>({
             size="sm"
             type="button"
             variant="destructive"
+            onClick={() => {
+              onDelete(table.getFilteredSelectedRowModel().rows);
+              table.resetRowSelection();
+            }}
             disabled={disabled}
           >
             <Trash2 className="mr-2 size-4 text-color_white" />
