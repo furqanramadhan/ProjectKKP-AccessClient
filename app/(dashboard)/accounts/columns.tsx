@@ -1,10 +1,8 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { FcGenericSortingAsc, FcGenericSortingDesc } from "react-icons/fc";
 import { Checkbox } from "@/components/ui/checkbox";
-
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
@@ -13,7 +11,6 @@ export type Payment = {
   status: "pending" | "processing" | "success" | "failed";
   email: string;
 };
-
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
@@ -37,13 +34,11 @@ export const columns: ColumnDef<Payment>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-
   {
     accessorKey: "email",
     header: ({ column }) => {
       const isSortedAsc = column.getIsSorted() === "asc";
       const isSortedDesc = column.getIsSorted() === "desc";
-
       return (
         <Button
           variant="ghost"
