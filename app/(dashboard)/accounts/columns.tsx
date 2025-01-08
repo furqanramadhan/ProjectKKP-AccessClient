@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { FaSortAlphaDown, FaSortAlphaUp } from "react-icons/fa";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Actions } from "./actions";
 import { InferResponseType } from "hono";
 import { client } from "@/lib/hono";
 
@@ -62,4 +63,8 @@ export const columns: ColumnDef<ResponseType>[] = [
   //   accessorKey: "status",
   //   header: "Status",
   // },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />,
+  },
 ];
