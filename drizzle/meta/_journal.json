@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1735546027057,
-      "tag": "0000_tranquil_blizzard",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1735547961758,
-      "tag": "0001_majestic_stature",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1735824601937,
-      "tag": "0002_conscious_captain_flint",
+      "when": 1736319068254,
+      "tag": "0000_unique_joystick",
       "breakpoints": true
     }
   ]
