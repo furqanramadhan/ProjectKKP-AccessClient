@@ -15,17 +15,19 @@ export const useEditAccount = (id?: string) => {
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
       const response = await client.api.accounts[":id"]["$patch"]({
-        json,
         param: { id },
+        json,
       });
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Account created successfully");
+      toast.success("Account updated successfully");
+      queryClient.invalidateQueries({ queryKey: ["accounts", { id }] });
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
+      // TODO: Invalidate summary and transactions
     },
     onError: () => {
-      toast.error("Failed to create account");
+      toast.error("Failed to edit account");
     },
   });
   return mutation;
