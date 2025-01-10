@@ -1,12 +1,7 @@
-import {
-  text,
-  pgTable,
-  integer,
-  point,
-  boolean,
-  serial,
-} from "drizzle-orm/pg-core";
+import { text, pgTable, integer, json, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+
+import { sql } from "drizzle-orm";
 
 export const accounts = pgTable("accounts", {
   id: text("id").primaryKey().notNull(),
@@ -15,23 +10,20 @@ export const accounts = pgTable("accounts", {
   userId: text("user_id").notNull(),
 });
 
-export const companies = pgTable("company", {
-  companyId: serial("id").primaryKey().notNull(),
-  companyName: text("name").notNull(),
-  address: text("address").notNull(),
-  city: text("city").notNull(),
-  region: text("region").notNull(),
-  postalCode: integer("postal_code").notNull(),
-  country: text("country").notNull(),
-  geoLocation: point("geo_location"),
-  isActive: boolean("is_active").notNull(),
-  isExternalCompany: boolean("is_external").notNull(),
-  contactPersonName: text("contact_person_name").notNull(),
-  phoneCompany: text("phone").notNull(),
-});
-
-export const userCompany = pgTable("user_company", {
-  userId: text("id").primaryKey().notNull(),
+export const organizations = pgTable("organizations", {
+  id: text("id").primaryKey(), // Primary key, Clerk Organization ID
+  name: text("name").notNull(), // Nama organisasi
+  slug: text("slug").notNull().unique(), // Slug unik
+  imageUrl: text("image_url"), // URL gambar organisasi (nullable)
+  membersCount: integer("members_count").notNull().default(0), // Jumlah anggota, default 0
+  maxAllowedMemberships: integer("max_allowed_memberships")
+    .notNull()
+    .default(5), // Batas anggota maksimal, default 5
+  publicMetadata: json("public_metadata").default(sql`'{}'::json`), // Metadata publik
+  privateMetadata: json("private_metadata").default(sql`'{}'::json`), // Metadata privat
+  createdAt: timestamp("created_at").notNull().defaultNow(), // Timestamp pembuatan
+  updatedAt: timestamp("updated_at").notNull().defaultNow(), // Timestamp pembaruan
 });
 
 export const insertAccountSchema = createInsertSchema(accounts);
+export const insertOrganizationSchema = createInsertSchema(organizations);

@@ -1,5 +1,5 @@
 {
-  "id": "9ef36ac3-919b-4167-91aa-a4b01722f761",
+  "id": "01f4eb19-595a-4b02-b81f-22f229cfa8cb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -41,13 +41,13 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.company": {
-      "name": "company",
+    "public.organizations": {
+      "name": "organizations",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
@@ -57,90 +57,73 @@
           "primaryKey": false,
           "notNull": true
         },
-        "address": {
-          "name": "address",
+        "slug": {
+          "name": "slug",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "city": {
-          "name": "city",
+        "image_url": {
+          "name": "image_url",
           "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "region": {
-          "name": "region",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "postal_code": {
-          "name": "postal_code",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "country": {
-          "name": "country",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "geo_location": {
-          "name": "geo_location",
-          "type": "point",
           "primaryKey": false,
           "notNull": false
         },
-        "is_active": {
-          "name": "is_active",
-          "type": "boolean",
+        "members_count": {
+          "name": "members_count",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": 0
         },
-        "is_external": {
-          "name": "is_external",
-          "type": "boolean",
+        "max_allowed_memberships": {
+          "name": "max_allowed_memberships",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": 5
         },
-        "contact_person_name": {
-          "name": "contact_person_name",
-          "type": "text",
+        "public_metadata": {
+          "name": "public_metadata",
+          "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false,
+          "default": "'{}'::json"
         },
-        "phone": {
-          "name": "phone",
-          "type": "text",
+        "private_metadata": {
+          "name": "private_metadata",
+          "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false,
+          "default": "'{}'::json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.user_company": {
-      "name": "user_company",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
+      "uniqueConstraints": {
+        "organizations_slug_unique": {
+          "name": "organizations_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

@@ -6,7 +6,7 @@ import { handle } from "hono/vercel";
 // import test from 'node:test';
 import authors from "./authors";
 import books from "./books";
-import accounts from "./accounts";
+import accounts from "../accounts/accounts";
 import { HTTPException } from "hono/http-exception";
 
 export const runtime = "edge";
